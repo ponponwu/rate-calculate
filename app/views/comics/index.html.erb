@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row">
+		<h1><%= @title %></h1>
+	</div>
+		<div class="group">
+			<%= my_collection_select("地區選擇", "country[country_category]", Country.categories) %>
+			<%=	select_tag(:country_select, Country.categories) %>
+		</div>
+	<div class="row">
+		<div class ="col-md-4">
+			<table class="table">
+				<tr>
+					<th>Bank</th>
+					<th>Buy</th>
+					<th>Sell</th>
+				</tr>
+				<% @bank.each do |c| %>
+					<tr>
+						<td><%= c[:bank] %></td>
+						<td><%= c[:buy] %></td>
+						<td><%= c[:sell] %></td>
+					</tr>
+				<% end %>
+			</table>
+	  </div>
+	</div>
+</div>

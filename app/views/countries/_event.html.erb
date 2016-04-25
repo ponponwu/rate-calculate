@@ -1,0 +1,12 @@
+
+
+
+<%= @better_buy %>
+<%= @better_sell %>
+<% @bank.each do |c| %>
+	<tr>
+		<td><%= c[:bank] %></td>
+		<td><%= c[:buy] %></td>
+		<td><%= c[:sell] %></td>
+	</tr>
+<% end %>

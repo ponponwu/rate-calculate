@@ -1,0 +1,16 @@
+defaults: &defaults
+   country_categories:
+      AMERICA : 'USD'
+      EUROPE: 'EUR'
+      JAPAN: 'JPY'
+      HONKONG: 'HKD'
+      ENGLAND: 'GBP'
+      AUSTRALIA: 'AUD'
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

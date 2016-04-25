@@ -1,0 +1,51 @@
+<div class="container">
+	<!-- <div class="group">
+		<%= my_country_select("幣別選擇", "choose", Country.categories) %>
+	</div> -->
+	<div class="col-md-10">
+		<div class="test">
+			<%= link_to "#{image_tag("US.png",{ size: "50x30" })}<br />&nbsp&nbsp美金".html_safe, 'javascript:;',{ :class=> "country", :"data-value" =>'USD' } %>
+			<%= link_to "#{image_tag("AU.png",{ size: "50x30" })}<br />&nbsp&nbsp澳幣".html_safe, 'javascript:;',{ :class=> "country", :"data-value" =>'AUD' } %>
+			<%= link_to "#{image_tag("EU.png",{ size: "50x30" })}<br />&nbsp&nbsp歐元".html_safe, 'javascript:;',{ :class=> "country", :"data-value" =>'EUR' } %>
+			<%= link_to "#{image_tag("JP.png",{ size: "50x30" })}<br />&nbsp&nbsp日幣".html_safe, 'javascript:;',{ :class=> "country", :"data-value" =>'JPY' } %>
+			<%= link_to "#{image_tag("HK.png",{ size: "50x30" })}<br />&nbsp&nbsp港幣".html_safe, 'javascript:;',{ :class=> "country", :"data-value" =>'HKD' } %>
+			<%= link_to "#{image_tag("GB.png",{ size: "50x30" })}<br />&nbsp&nbsp英鎊".html_safe, 'javascript:;',{ :class=> "country", :"data-value" =>'GBP' } %>
+
+		</div>
+
+	<h3>各家銀行匯率查詢</h3>
+	<h4>(資料來自 <%= link_to "TaiwanRate", "http://www.taiwanrate.org/" %>,以爬蟲方式讀取資料)</h4>
+		<div id="event_area">
+			<div class="row">
+				<div class ="col-md-10">
+					<table class="table">
+						<div class="choice"></div>
+						<thead>
+							<tr>
+								<th>銀行</th>
+								<th>銀行買入價</th>
+								<th>銀行賣出價</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<h3>匯率換算</h3>
+		<h5>匯率依<%= link_to "台灣銀行","http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm" %>牌告所示,進行換算</h5>
+		<input type="text" id="amount" class="form-control" placeholder="請輸入金額"/>
+		<div class="form-group">
+			<%= my_country_select("你要將", "from_rate", Country.categories) %>
+
+			<%= my_country_select("換成", "to_rate", Country.categories) %>
+		</div>
+
+		<button type="button" class="btn btn-success btn-xs" id="btnTransfer">換算</button>
+
+		<div id="transfer_area"></div>
+	</div>
+</div>
