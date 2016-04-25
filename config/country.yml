@@ -1,11 +1,13 @@
 defaults: &defaults
    country_categories:
+      TAIWAN: 'TWD'
       AMERICA : 'USD'
       EUROPE: 'EUR'
       JAPAN: 'JPY'
       HONKONG: 'HKD'
       ENGLAND: 'GBP'
       AUSTRALIA: 'AUD'
+
 development:
   <<: *defaults
 
