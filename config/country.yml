@@ -1,6 +1,6 @@
 defaults: &defaults
    country_categories:
-      TAIWAN: 'TWD'
+      TAIWAN: 'NTD'
       AMERICA : 'USD'
       EUROPE: 'EUR'
       JAPAN: 'JPY'
