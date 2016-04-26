@@ -7,6 +7,18 @@ defaults: &defaults
       HONKONG: 'HKD'
       ENGLAND: 'GBP'
       AUSTRALIA: 'AUD'
+      SWITZERLAND: 'CHF'
+      NEWZEALAND: 'NZD'
+      CANADA: 'CAD'
+      SINGAPORE: 'SGD'
+      KOREA: 'KRW'
+      THAILAND: 'THB'
+      CHINA: 'CNY'
+      SOUTHAFRICA: 'ZAR'
+      SWEDEN: 'SEK'
+      PILIPINAS: 'PHP'
+      INDONESIA: 'IDR'
+      TURKEY: 'TRY'
 
 development:
   <<: *defaults
