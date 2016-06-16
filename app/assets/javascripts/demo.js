@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $( "#draggable" ).draggable();
   $('select').select2({
     width: "60%"
   });

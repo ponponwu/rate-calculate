@@ -15,7 +15,7 @@ module CountriesHelper
   end
 
   def image_link(pic , title , value)
-     link_to image_tag(pic,{ size: "50x30" }) + tag(:br) + title ,'javascript:;',{ :class=> "country", :"data-value" => value }
+     link_to image_tag(pic,{ size: "50x30" }) + tag(:br) + title ,'javascript:;',{ :class=> "country img-responsive", :"data-value" => value }
   end
 
 
