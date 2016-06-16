@@ -8,15 +8,17 @@ class ApplicationController < ActionController::Base
     min = arr[0][0][:sell]
 
     if compare==0
+      bank = arr[0][0][:bank]
       arr[0].each_with_index do |r,idx|
         val = r[:buy]
-        if val>max
+        if val > max
           max = val
           bank = r[:bank]
         end
       end
       [bank,max]
     else
+      bank = arr[0][0][:bank]
       arr[0].each_with_index do |r,idx|
         val = r[:sell]
         if val<min

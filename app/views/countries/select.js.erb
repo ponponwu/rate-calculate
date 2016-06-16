@@ -1,6 +1,4 @@
-$('#event_area tbody').html("<%= j(render :partial => 'event') %>");
+$('#event_area tbody').html('')
 $('.choice').html('')
-$('.choice').append("<table class='table table-bordered table-reflow table-danger'><tbody>")
-$('.choice table tbody').append("<tr class='info'><td> 如果要買<%= @dollarSelect %>請到<%= @better_buy[0] %>(匯率<%= @better_buy[1] %>)買會比較便宜</td></tr>")
-$('.choice table tbody').append("<tr class='info'><td> 如果要賣<%= @dollarSelect %>請到<%= @better_sell[0] %>(匯率<%= @better_sell[1] %>)會比較划算</td></tr>")
-$('.choice table tbody').append("</tbody></table>")
+$('#event_area tbody').html("<%= j(render :partial => 'event') %>");
+$('.choice').html("<%= j(render :partial => 'compare') %>");

@@ -12,7 +12,6 @@ $(document).ready(function() {
         country_cn: $(this).text()
       }
     }).done(function(data) {
-    	console.log(data);
     });
   });
   $('#btnTransfer').on('click', function(){
