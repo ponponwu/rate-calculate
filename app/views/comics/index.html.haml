@@ -1,0 +1,18 @@
+.container
+  .row
+    %h1= @title
+  .group
+    = my_collection_select("地區選擇", "country[country_category]", Country.categories)
+    = select_tag(:country_select, Country.categories)
+  .row
+    .col-md-4
+      %table.table
+        %tr
+          %th Bank
+          %th Buy
+          %th Sell
+        - @bank.each do |c|
+          %tr
+            %td= c[:bank]
+            %td= c[:buy]
+            %td= c[:sell]

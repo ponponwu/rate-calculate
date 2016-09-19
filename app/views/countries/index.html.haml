@@ -1,0 +1,54 @@
+/
+  <div class="group">
+  <haml_loud> my_country_select(&quot;幣別選擇&quot;, &quot;choose&quot;, Country.categories) </haml_loud>
+  </div>
+.col-md-9
+  .test
+    = image_link("US.gif","美金","USD")
+    = image_link("AU.gif","澳幣","AUD")
+    = image_link("EU.jpg","歐元","EUR")
+    = image_link("riben.gif","日幣","JPY")
+    = image_link("HK.png","港幣","HKD")
+    = image_link("ying.gif","英鎊","GBP")
+    = image_link("ruishi.gif","瑞士法郎","CHF")
+    = image_link("New.png","紐幣","NZD")
+    = image_link("jnd.gif","加幣","CAD")
+    = image_link("xjp.gif","新幣","SGD")
+    = image_link("hanguo.gif","韓元","KRW")
+    = image_link("THA.jpg","泰幣","THB")
+    = image_link("china.gif","人民幣","CNY")
+    = image_link("Nan.jpg","南非幣","ZAR")
+    = image_link("ruidian.gif","瑞典幣","SEK")
+    = image_link("PH.jpg","菲律賓幣","PHP")
+    = image_link("yini.gif","印尼幣","IDR")
+    = image_link("Turkey.png","土耳其幣","TRY")
+  .container
+    .col-md-10
+      #event_area
+        %h3 各家銀行匯率查詢
+        %h4
+          (資料來自 #{link_to "TaiwanRate", "http://www.taiwanrate.org/"},以爬蟲方式讀取資料)
+        .row
+          %table.table.table-striped.table-bordered.table-hover.table-reflow
+            .choice
+            %thead.thead-default
+              %tr
+                %th 銀行
+                %th 銀行買入價
+                %th 銀行賣出價
+            %tbody
+#draggable.col-md-3
+  .panel.panel-primary
+    .panel-heading
+      %h3.panel-title 匯率換算
+      %h5
+        匯率依#{link_to "台灣銀行","http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm"}牌告所示,進行換算
+    .panel-body
+      .form-group
+        %input#amount.form-control{:placeholder => "請輸入金額", :type => "text"}/
+        = my_country_select("你要將", "from_rate", Country.categories)
+        = my_country_select("換成", "to_rate", Country.categories)
+      %button#btnTransfer.btn.btn-success.btn-xs{:type => "button"} 換算
+      .form-group
+        %label{:for => "calAmount"} 總共為 $
+        %input#calAmount.form-control{:type => "text"}/
