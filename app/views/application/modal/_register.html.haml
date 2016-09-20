@@ -1,0 +1,16 @@
+%form#register-form{:style => "display:none;"}
+  .modal-body
+    #div-register-msg
+      #icon-register-msg.glyphicon.glyphicon-chevron-right
+      %span#text-register-msg Register an account.
+    = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), label_errors: true, inline_errors: true) do |f|
+      = f.email_field :email, required: true, autofocus: true
+      = f.password_field :password, label: "Password"
+      = f.password_field :password_confirmation, label: "Confirm Password"
+      = f.submit "Sign up"
+    .modal-footer
+      %div
+        %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} Register
+      %div
+        %button#register_login_btn.btn.btn-link{:type => "button"} Log In
+        %button#register_lost_btn.btn.btn-link{:type => "button"} Lost Password?

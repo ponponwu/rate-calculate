@@ -1,0 +1,9 @@
+%form#lost-form{:style => "display:none;"}
+  .modal-body
+    = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = f.email_field :email, required: true, autofocus: true
+      = f.submit "Send me reset password instructions"
+    .modal-footer
+      %div
+        %button#lost_login_btn.btn.btn-link{:type => "button"} Log In
+        %button#lost_register_btn.btn.btn-link{:type => "button"} Register

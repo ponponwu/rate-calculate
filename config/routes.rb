@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   root 'countries#index'
 
   resources :countries do
@@ -9,7 +8,7 @@ Rails.application.routes.draw do
       get :select
     end
   end
-
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

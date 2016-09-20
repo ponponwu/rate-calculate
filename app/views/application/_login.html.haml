@@ -1,4 +1,26 @@
 - if !current_user
+  %li= link_to("註冊", '#', {"role": "button", "data-toggle": "modal", "data-target": "#login-modal"})
   %li= link_to("登入", new_user_session_path)
 - else
   %li= link_to("登出", destroy_user_session_path, method: :delete)
+
+
+#login-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :style => "display: none;", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header{:align => "center"}
+        %img#img_logo.img-circle{:src => "http://bootsnipp.com/img/logo.jpg"}/
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+      / Begin # DIV Form
+      #div-forms
+        .modal-container
+          = render 'application/modal/login'
+          = render 'application/modal/lost'
+          = render 'application/modal/register'
+
+
+:sass
+  .modal-container
+    width: 100%
+    padding: 10px 10px
