@@ -1,9 +1,9 @@
-%form#login-form
+#login-form
   .modal-body
     #div-login-msg
       #icon-login-msg.glyphicon.glyphicon-chevron-right
       %span#text-login-msg Type your username and password.
-      = bootstrap_form_for(:user) do |f|
+      = bootstrap_form_for(resource_name, :url => session_path(resource_name)) do |f|
         = f.email_field :email
         = f.password_field :password
         = f.check_box :remember_me

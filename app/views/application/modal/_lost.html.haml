@@ -1,4 +1,4 @@
-%form#lost-form{:style => "display:none;"}
+#lost-form{:style => "display:none;"}
   .modal-body
     = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
       = f.email_field :email, required: true, autofocus: true
