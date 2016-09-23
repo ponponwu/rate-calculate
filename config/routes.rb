@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'countries#index'
+  root 'countries#test'
 
   resources :countries do
     collection do
@@ -8,7 +8,12 @@ Rails.application.routes.draw do
       get :select
     end
   end
-  devise_for :users, :controllers => { sessions: "sessions" }
+  devise_for :users, :controllers => {
+    :registrations => "users/registrations" ,
+    :sessions => "users/sessions",
+    :passwords => 'users/passwords',
+    :confirmations => 'users/confirmations'
+  }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
