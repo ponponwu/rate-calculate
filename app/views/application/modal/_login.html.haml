@@ -1,14 +1,91 @@
 #login-form
   .modal-body
     #div-login-msg
-      #icon-login-msg.glyphicon.glyphicon-chevron-right
-      %span#text-login-msg Type your username and password.
+      %button.btn.btn-block.btn-fb-login.modal-setting{:type => "button"} 使用Facebook帳號登錄
+      %button.btn.btn-block.btn-google-login.modal-setting{:type => "button"} 使用Google帳號登錄
+      .signup-or-separator
+        %span.h6.signup-or-separator--text 或
+        %hr
+
+      //#icon-login-msg.glyphicon.glyphicon-chevron-right
+      //%span#text-login-msg Enter your email and password to sign in
       = bootstrap_form_for(resource_name, :url => session_path(resource_name)) do |f|
-        = f.email_field :email
-        = f.password_field :password
-        = f.check_box :remember_me
-        = f.submit "Log In"
+        = f.email_field :email, hide_label: true, placeholder: "電子郵件地址", control_class: 'modal-setting form-control'
+        = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control'
+        = f.check_box :remember_me, label: "記住我"
+        = f.submit "登錄", control_class: 'modal-setting form-control'
+
     .modal-footer
       %div
-        %button#login_lost_btn.btn.btn-link{:type => "button"} Lost Password?
-        %button#login_register_btn.btn.btn-link{:type => "button"} Register
+        %button#login_lost_btn.btn.btn-block{:type => "button"} Lost Password?
+        %button#login_register_btn.btn.btn-block{:type => "button"} Register
+
+
+:sass
+  .modal-setting
+    width: 100%
+    height: 60px
+    border-radius: 2px !important
+    font-size: 16px
+  .btn-block
+    display: block
+    white-space: normal
+    text-decoration: none
+    border-color: #c4c4c4
+    background: white
+    color: #484848
+
+  .btn-fb-login
+    border-color: #3B5998
+    border-bottom-color: #263a63
+    background-color: #3B5998
+    color: #fff !important
+    &:focus
+      border-color: #4568b2
+      border-bottom-color: #2d4575
+      background-color: #4568b2
+      color: #fff
+
+  .signup-or-separator
+    background: none
+    height: 45px
+    position: relative
+    text-align: center
+
+  .signup-or-separator--text
+    background-color: #fff
+    display: inline-block
+    padding: 8px
+
+  .signup-or-separator hr
+    margin: -24px auto 10px
+    width: 100%
+  //customize
+  .form-group
+    margin-bottom: 5px !important
+
+
+
+
+
+
+
+
+
+  .btn-modal
+    display: inline-block
+    margin-bottom: 0
+    -webkit-border-radius: 2px
+    -moz-border-radius: 2px
+    border-radius: 2px
+    border: 1px solid
+    text-align: center
+    vertical-align: middle
+    font-weight: bold
+    line-height: 1.43
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    white-space: nowrap
+    cursor: pointer

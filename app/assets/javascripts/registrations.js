@@ -9,8 +9,6 @@ $(function() {
   var $msgAnimateTime = 150;
   var $msgShowTime = 2000;
 
-
-
   $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
   $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
   $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
@@ -19,14 +17,14 @@ $(function() {
   $('#register_lost_btn').click( function () { modalAnimate($formRegister, $formLost); });
 
   function modalAnimate ($oldForm, $newForm) {
-      var $oldH = $oldForm.height();
-      var $newH = $newForm.height();
-      $divForms.css("height",$oldH);
-      $oldForm.fadeToggle($modalAnimateTime, function(){
-          $divForms.animate({height: $newH}, $modalAnimateTime, function(){
-              $newForm.fadeToggle($modalAnimateTime);
-          });
+    var $oldH = $oldForm.height();
+    var $newH = $newForm.height();
+    $divForms.css("height",$oldH);
+    $oldForm.fadeToggle($modalAnimateTime, function(){
+      $divForms.animate({height: $newH}, $modalAnimateTime, function(){
+        $newForm.fadeToggle($modalAnimateTime);
       });
+    });
   }
 
 

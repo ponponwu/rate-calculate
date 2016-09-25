@@ -2,7 +2,6 @@
   .modal-dialog
     .modal-content
       .modal-header{:align => "center"}
-        %img#img_logo.img-circle{:src => "http://bootsnipp.com/img/logo.jpg"}/
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
       / Begin # DIV Form
@@ -16,3 +15,5 @@
   .modal-container
     width: 100%
     padding: 10px 10px
+  .modal-header
+    border-bottom: none
