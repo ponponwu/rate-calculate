@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     :registrations => "users/registrations" ,
     :sessions => "users/sessions",
     :passwords => 'users/passwords',
-    :confirmations => 'users/confirmations'
+    :confirmations => 'users/confirmations',
+    :omniauth_callbacks => "users/omniauth_callbacks"
   }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

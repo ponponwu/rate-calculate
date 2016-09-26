@@ -1,9 +1,8 @@
 #lost-form{:style => "display:none;"}
   .modal-body
     = bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      = f.email_field :email, required: true, autofocus: true
-      = f.submit "Send me reset password instructions"
+      = f.email_field :email, required: true, autofocus: true, label: '請輸入與您的帳號關聯的郵箱地址，我們將通過電子郵件給您發送重置密碼的連結。'
+      = f.submit '發送重置密碼連結'
     .modal-footer
-      %div
-        %button#lost_login_btn.btn.btn-link{:type => "button"} Log In
-        %button#lost_register_btn.btn.btn-link{:type => "button"} Register
+      %button#lost_login_btn.btn.btn-link{:type => "button"} 登錄
+      %button#lost_register_btn.btn.btn-link{:type => "button"} 註冊

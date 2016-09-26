@@ -1,10 +1,12 @@
 #login-form
   .modal-body
     #div-login-msg
-      %button.btn.btn-block.btn-fb-login.modal-setting{:type => "button"} 使用Facebook帳號登錄
+      = button_tag class: 'btn btn-block btn-fb-login modal-setting', type: 'button' do
+        = link_to user_facebook_omniauth_authorize_path do
+          使用Facebook帳號登錄
       %button.btn.btn-block.btn-google-login.modal-setting{:type => "button"} 使用Google帳號登錄
       .signup-or-separator
-        %span.h6.signup-or-separator--text 或
+        %span.h5.signup-or-separator--text 或
         %hr
 
       //#icon-login-msg.glyphicon.glyphicon-chevron-right
@@ -12,18 +14,19 @@
       = bootstrap_form_for(resource_name, :url => session_path(resource_name)) do |f|
         = f.email_field :email, hide_label: true, placeholder: "電子郵件地址", control_class: 'modal-setting form-control'
         = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control'
-        = f.check_box :remember_me, label: "記住我"
-        = f.submit "登錄", control_class: 'modal-setting form-control'
+        .clearfix.space-1
+          = f.check_box :remember_me, label: "記住我", class: 'remember_me'
+          %a#login_lost_btn.pull-right 忘記密碼?
+        = f.submit "登錄", class: 'modal-setting form-control btn-login'
 
     .modal-footer
-      %div
-        %button#login_lost_btn.btn.btn-block{:type => "button"} Lost Password?
-        %button#login_register_btn.btn.btn-block{:type => "button"} Register
+      .clearfix.space-1
+        %h4.pull-left 還沒有帳號嗎？
+        %button#login_register_btn.btn.modal-setting.pull-right{:type => "button"} 註冊
 
 
 :sass
   .modal-setting
-    width: 100%
     height: 60px
     border-radius: 2px !important
     font-size: 16px
@@ -39,12 +42,18 @@
     border-color: #3B5998
     border-bottom-color: #263a63
     background-color: #3B5998
-    color: #fff !important
+    a
+      color: #fff !important
     &:focus
       border-color: #4568b2
       border-bottom-color: #2d4575
       background-color: #4568b2
       color: #fff
+  .btn-login
+    border-color: #ff5a5f
+    border-bottom-color: #e00007
+    background-color: #ff5a5f
+    color: #fff
 
   .signup-or-separator
     background: none
@@ -60,32 +69,30 @@
   .signup-or-separator hr
     margin: -24px auto 10px
     width: 100%
+
   //customize
   .form-group
     margin-bottom: 5px !important
 
+  .remember_me
+    float: left
+    padding-top: 0
+    padding-bottom: 0
+
+  #login_lost_btn
+    color: #e00007
+
+  #login_register_btn
+    background: #fff
+    height: 40px
+    border-color: #ff5a5f
+    color: #ff5a5f
+
+  .space-1
+    margin: 6px 0
 
 
 
 
-
-
-
-
-  .btn-modal
-    display: inline-block
-    margin-bottom: 0
-    -webkit-border-radius: 2px
-    -moz-border-radius: 2px
-    border-radius: 2px
-    border: 1px solid
-    text-align: center
-    vertical-align: middle
-    font-weight: bold
-    line-height: 1.43
-    -webkit-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
-    user-select: none
-    white-space: nowrap
-    cursor: pointer
+:javascript
+  $('#login_lost_btn').insertAfter('label[for=user_remember_me]');
