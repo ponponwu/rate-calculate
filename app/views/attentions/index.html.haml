@@ -1,0 +1,14 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th #
+      %th{:width => "220"} Currency
+      %th price
+      //%th{:width => "100"} Options
+  %tbody
+    - @attentions.each do |attention|
+      %tr
+        %td= attention.id
+        %td= attention.currency
+        %td= attention.target_amount
+        //%td= link_to("Edit", edit_admin_product_path(product))

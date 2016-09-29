@@ -9,17 +9,19 @@ class Users::SessionsController < Devise::SessionsController
     clean_up_passwords(resource)
     yield resource if block_given?
     respond_with(resource, serialize_options(resource))
+    session[:user_id] = resource.id
   end
 
   def create
     Rails.logger.warn(" >>> Custom Create >>>")
     self.resource = warden.authenticate!(auth_options)
-    Rails.logger.warn("11123654")
+    Rails.logger.warn(resource.id)
     if resource
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)
       yield resource if block_given?
       respond_with resource, location: after_sign_in_path_for(resource)
+      session[:user_id] = resource.id
     else
       Rails.logger.warn(" >>> Sign in Error >>>")
       puts "sign_in error"

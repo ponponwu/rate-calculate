@@ -23,7 +23,7 @@ class CountriesController < ApplicationController
     end
     @taiwan = taiwanBank
     session[:rate] = Hash[ taiwanBank.map { |d| [d["dollar"], d["buy_in"]]} ]
-
+    @attention = Attention.find_by_user_id(session[:user_id])
 	end
   def select
     dollarSelect = params[:country_cn]
