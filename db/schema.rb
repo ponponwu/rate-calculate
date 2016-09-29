@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926100327) do
+ActiveRecord::Schema.define(version: 20160929044745) do
+
+  create_table "attentions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "currency"
+    t.float    "target_amount"
+    t.boolean  "is_enabled",    default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "countries", force: :cascade do |t|
     t.datetime "created_at", null: false

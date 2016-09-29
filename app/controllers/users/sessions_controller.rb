@@ -14,6 +14,7 @@ class Users::SessionsController < Devise::SessionsController
   def create
     Rails.logger.warn(" >>> Custom Create >>>")
     self.resource = warden.authenticate!(auth_options)
+    Rails.logger.warn("11123654")
     if resource
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)

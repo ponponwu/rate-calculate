@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get :select
     end
   end
+  resources :attentions
+  
   devise_for :users, :controllers => {
     :registrations => "users/registrations" ,
     :sessions => "users/sessions",
