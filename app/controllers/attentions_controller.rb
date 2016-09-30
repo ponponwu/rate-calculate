@@ -5,8 +5,9 @@ class AttentionsController < ApplicationController
   end
 
   def create
-    #@attention = Attention.new(attention_params)
+
     @attention = current_user.attentions.build(attention_params)
+
     if @attention.save
       flash[:notice] = "新增成功"
       redirect_to attentions_path
@@ -18,8 +19,13 @@ class AttentionsController < ApplicationController
 
   def index
     @attentions = Attention.where(user_id: session["warden.user.user.key"][0][0])
+  end
+
+  def update
 
   end
+
+
   private
   def attention_params
     params.require(:attention).permit(:currency, :target_amount)

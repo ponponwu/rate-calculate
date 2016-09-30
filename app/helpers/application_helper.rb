@@ -10,17 +10,23 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
-  def bootstrap_class_for flash_type
-    { success: "alert-success", error: "alert-danger", alert: "alert-warning", notice: "alert-info" }[flash_type] || flash_type.to_s
-  end
+  #/////////////////////
 
-  def flash_messages(opts = {})
-    flash.each do |msg_type, message|
-      concat(content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} fade in") do
-        concat content_tag(:button, 'x', class: "close", data: { dismiss: 'alert' })
-        concat message
-      end)
+  def notice_message
+    alert_types = { notice: :success, alert: :danger }
+
+    close_button_options = { class: "close", "data-dismiss" => "alert", "aria-hidden" => true }
+    close_button = content_tag(:button, "×", close_button_options)
+
+    alerts = flash.map do |type, message|
+      alert_content = close_button + message
+
+      alert_type = alert_types[type.to_sym] || type
+      alert_class = "alert alert-#{alert_type} alert-dismissable"
+
+      content_tag(:div, alert_content, class: alert_class)
     end
-    nil
+
+    alerts.join("\n").html_safe
   end
 end
