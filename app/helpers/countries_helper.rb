@@ -1,8 +1,5 @@
 module CountriesHelper
-  def render_country_category(country)
-    key = CountryData.country_categories.key(country.country_category)
-    I18n.t("country_categories.#{key}")
-  end
+
 
   def my_country_select(title, target_id , objs)
     html = '<div class="clearfix"><label for='+target_id+'">'+title+'</label><div class="input">'
@@ -15,7 +12,7 @@ module CountriesHelper
   end
 
   def image_link(pic , title , value)
-     link_to image_tag(pic,{ size: "50x30" }) + tag(:br) + title ,'javascript:;',{ :class=> "country img-responsive", :"data-value" => value }
+     link_to image_tag(pic,{ size: "50x30" }) + tag(:br) + title ,'javascript:;',{ class: "country img-responsive", :"data-value" => value }
   end
 
 

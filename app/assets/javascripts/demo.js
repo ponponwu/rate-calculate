@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $( "#draggable" ).draggable();
+  // $( "#draggable" ).draggable();
   $('select').select2({
     width: "60%"
   });

@@ -8,8 +8,13 @@ Rails.application.routes.draw do
       get :select
     end
   end
-  resources :attentions
-  
+  resources :attentions do
+    collection do
+      get :new_release
+    end
+    #get 'attentions/new_release' => 'attentions#new_release', as: :new_release
+  end
+
   devise_for :users, :controllers => {
     :registrations => "users/registrations" ,
     :sessions => "users/sessions",
