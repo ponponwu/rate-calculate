@@ -45,10 +45,10 @@
         匯率依#{link_to "台灣銀行","http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm"}牌告所示,進行換算
     .panel-body
       .form-group
-        %input#amount.form-control{:placeholder => "請輸入金額", :type => "text"}/
+        %input#amount.form-control{placeholder: "請輸入金額", type: "text"}/
         = my_country_select("你要將", "from_rate", Country.categories)
         = my_country_select("換成", "to_rate", Country.categories)
-      %button#btnTransfer.btn.btn-success.btn-xs{:type => "button"} 換算
+      %button#btnTransfer.btn.btn-success.btn-xs{type: "button"} 換算
       .form-group
-        %label{:for => "calAmount"} 總共為 $
-        %input#calAmount.form-control{:type => "text"}/
+        %label{for: "calAmount"} 總共為 $
+        %input#calAmount.form-control{type: "text"}/

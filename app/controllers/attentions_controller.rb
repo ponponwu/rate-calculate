@@ -1,8 +1,6 @@
+# atteintion for rate
 class AttentionsController < ApplicationController
   before_action :authenticate_user!
-  def new
-    #@attention = Attention.new
-  end
 
   def new_release
     respond_to do |format|
@@ -11,24 +9,25 @@ class AttentionsController < ApplicationController
     end
   end
 
+  # create attention
   def create
-
     @attention = current_user.attentions.build(attention_params)
-
-    @old_attention = Attention.where(user_id: session["warden.user.user.key"][0][0], is_enabled: true, currency: @attention.currency)
+    @currency = @attention.currency
+    @userId = session["warden.user.user.key"][0][0]
+    @old_attention = Attention.find_by(user_id: @userId, is_enabled: true, currency: @currency)
     if !@old_attention.blank?
-      #find and update
+      # find and update
       respond_to do |format|
         if @old_attention.update(attention_params)
-          format.html { redircet_to attentions_path}
+          flash[:notice] = "已將" + @currency + "修改完成"
+          format.html { redirect_to attentions_path}
         else
-
+          flash[:notice] = "請重試"
+          render :back
         end
       end
     else
       if @attention.save
-        Rails.logger.warn(" >>> 12123 Create >>>")
-
         flash[:notice] = "新增成功"
         redirect_to attentions_path
       else
@@ -40,23 +39,17 @@ class AttentionsController < ApplicationController
           format.js{ render file: '/attentions/create.js.haml' }
         end
       end
-    end#if
-
-  end
-
-
-  def update
-
+    end # if
   end
 
   def index
     @attentions = Attention.where(user_id: session["warden.user.user.key"][0][0], is_enabled: true)
+    @test = session[:rate]
   end
 
   private
+
   def attention_params
     params.require(:attention).permit(:currency, :target_amount)
   end
-
-
 end
