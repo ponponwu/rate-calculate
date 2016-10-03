@@ -1,21 +1,43 @@
 "zh-TW":
-   country_categories:
-      TAIWAN: "台幣"
-      AMERICA: "美金"
-      EUROPE: "歐元"
-      JAPAN: "日幣"
-      HONKONG: "港幣"
-      ENGLAND: "英鎊"
-      AUSTRALIA: "澳幣"
-      SWITZERLAND: "瑞士法郎"
-      NEWZEALAND: '紐幣'
-      CANADA: '加幣'
-      SINGAPORE: '新幣'
-      KOREA: '韓元'
-      THAILAND: '泰幣'
-      CHINA: '人民幣'
-      SOUTHAFRICA: '南非幣'
-      SWEDEN: '瑞典幣'
-      PILIPINAS: '菲律賓幣'
-      INDONESIA: '印尼幣'
-      TURKEY: '土耳其幣'
+  country_categories:
+    NTD: "台幣"
+    USD: "美金"
+    EUR: "歐元"
+    JPY: "日幣"
+    HKD: "港幣"
+    GBP: "英鎊"
+    AUD: "澳幣"
+    CHF: "瑞士法郎"
+    NZD: '紐幣'
+    CAD: '加幣'
+    SGD: '新幣'
+    KRW: '韓元'
+    THB: '泰幣'
+    CNY: '人民幣'
+    ZAR: '南非幣'
+    SEK: '瑞典幣'
+    PHP: '菲律賓幣'
+    IDR: '印尼幣'
+    TRY: '土耳其幣'
+
+
+
+    # TAIWAN: "台幣"
+    # AMERICA: "美金"
+    # EUROPE: "歐元"
+    # JAPAN: "日幣"
+    # HONKONG: "港幣"
+    # ENGLAND: "英鎊"
+    # AUSTRALIA: "澳幣"
+    # SWITZERLAND: "瑞士法郎"
+    # NEWZEALAND: '紐幣'
+    # CANADA: '加幣'
+    # SINGAPORE: '新幣'
+    # KOREA: '韓元'
+    # THAILAND: '泰幣'
+    # CHINA: '人民幣'
+    # SOUTHAFRICA: '南非幣'
+    # SWEDEN: '瑞典幣'
+    # PILIPINAS: '菲律賓幣'
+    # INDONESIA: '印尼幣'
+    # TURKEY: '土耳其幣'

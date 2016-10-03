@@ -1,28 +1,24 @@
-/
-  <div class="group">
-  <haml_loud> my_country_select(&quot;幣別選擇&quot;, &quot;choose&quot;, Country.categories) </haml_loud>
-  </div>
 .row
   .col-md-9
     .test
-      = image_link("US.gif","美金","USD")
-      = image_link("AU.gif","澳幣","AUD")
-      = image_link("EU.jpg","歐元","EUR")
-      = image_link("riben.gif","日幣","JPY")
-      = image_link("HK.png","港幣","HKD")
-      = image_link("ying.gif","英鎊","GBP")
-      = image_link("ruishi.gif","瑞士法郎","CHF")
-      = image_link("New.png","紐幣","NZD")
-      = image_link("jnd.gif","加幣","CAD")
-      = image_link("xjp.gif","新幣","SGD")
-      = image_link("hanguo.gif","韓元","KRW")
-      = image_link("THA.jpg","泰幣","THB")
-      = image_link("china.gif","人民幣","CNY")
-      = image_link("Nan.jpg","南非幣","ZAR")
-      = image_link("ruidian.gif","瑞典幣","SEK")
-      = image_link("PH.jpg","菲律賓幣","PHP")
-      = image_link("yini.gif","印尼幣","IDR")
-      = image_link("Turkey.png","土耳其幣","TRY")
+      = image_link('US.gif', t('country_categories.USD'), 'USD')
+      = image_link('AU.gif', t('country_categories.AUD'), 'AUD')
+      = image_link('EU.jpg', t('country_categories.EUR'), 'EUR')
+      = image_link('riben.gif', t('country_categories.JPY'), 'JPY')
+      = image_link('HK.png', t('country_categories.HKD'), 'HKD')
+      = image_link('ying.gif', t('country_categories.GBP'), 'GBP')
+      = image_link('ruishi.gif', t('country_categories.CHF'), 'CHF')
+      = image_link('New.png', t('country_categories.NZD'), 'NZD')
+      = image_link('jnd.gif', t('country_categories.CAD'), 'CAD')
+      = image_link('xjp.gif', t('country_categories.SGD'), 'SGD')
+      = image_link('hanguo.gif', t('country_categories.KRW'), 'KRW')
+      = image_link('THA.jpg', t('country_categories.THB'), 'THB')
+      = image_link('china.gif', t('country_categories.CNY'), 'CNY')
+      = image_link('Nan.jpg', t('country_categories.ZAR'), 'ZAR')
+      = image_link('ruidian.gif', t('country_categories.SEK'), 'SEK')
+      = image_link('PH.jpg', t('country_categories.PHP'), 'PHP')
+      = image_link('yini.gif', t('country_categories.IDR'), 'IDR')
+      = image_link('Turkey.png', t('country_categories.TRY'), 'TRY')
   .col-md-3
     = render 'panel_right'
 .row

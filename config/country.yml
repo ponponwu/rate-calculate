@@ -1,24 +1,44 @@
 defaults: &defaults
-   country_categories:
-      TAIWAN: 'NTD'
-      AMERICA : 'USD'
-      EUROPE: 'EUR'
-      JAPAN: 'JPY'
-      HONKONG: 'HKD'
-      ENGLAND: 'GBP'
-      AUSTRALIA: 'AUD'
-      SWITZERLAND: 'CHF'
-      NEWZEALAND: 'NZD'
-      CANADA: 'CAD'
-      SINGAPORE: 'SGD'
-      KOREA: 'KRW'
-      THAILAND: 'THB'
-      CHINA: 'CNY'
-      SOUTHAFRICA: 'ZAR'
-      SWEDEN: 'SEK'
-      PILIPINAS: 'PHP'
-      INDONESIA: 'IDR'
-      TURKEY: 'TRY'
+  country_categories:
+    NTD: "台幣"
+    USD: "美金"
+    EUR: "歐元"
+    JPY: "日幣"
+    HKD: "港幣"
+    GBP: "英鎊"
+    AUD: "澳幣"
+    CHF: "瑞士法郎"
+    NZD: '紐幣'
+    CAD: '加幣'
+    SGD: '新幣'
+    KRW: '韓元'
+    THB: '泰幣'
+    CNY: '人民幣'
+    ZAR: '南非幣'
+    SEK: '瑞典幣'
+    PHP: '菲律賓幣'
+    IDR: '印尼幣'
+    TRY: '土耳其幣'
+
+      # TAIWAN: 'NTD'
+      # AMERICA : 'USD'
+      # EUROPE: 'EUR'
+      # JAPAN: 'JPY'
+      # HONKONG: 'HKD'
+      # ENGLAND: 'GBP'
+      # AUSTRALIA: 'AUD'
+      # SWITZERLAND: 'CHF'
+      # NEWZEALAND: 'NZD'
+      # CANADA: 'CAD'
+      # SINGAPORE: 'SGD'
+      # KOREA: 'KRW'
+      # THAILAND: 'THB'
+      # CHINA: 'CNY'
+      # SOUTHAFRICA: 'ZAR'
+      # SWEDEN: 'SEK'
+      # PILIPINAS: 'PHP'
+      # INDONESIA: 'IDR'
+      # TURKEY: 'TRY'
 
 development:
   <<: *defaults
