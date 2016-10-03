@@ -3,25 +3,7 @@ require 'open-uri'
 
 class CountriesController < ApplicationController
   def index
-    taiwanBank = []
-    url = 'http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm'
-    doc = Nokogiri::HTML(open(url))
-
-    doc.css('.main tbody tr td.currency .hidden-phone.print_show').each_with_index do |r, index|
-      taiwanBank << {
-        'dollar' => r.children.text.strip[-4..-2],
-        'buy_in' => index
-      }
-    end
-    doc.css('.main tbody tr td:nth-child(3)').each_with_index do |r, index|
-      taiwanBank[index]['buy_in'] = r.children.text
-    end
-    taiwanBank << {
-      'dollar' => 'NTD',
-      'buy_in' => 1
-    }
-    @taiwan = taiwanBank
-    session[:rate] = Hash[taiwanBank.map { |d| [d['dollar'], d['buy_in']] }]
+    set_newest_session_rate
     @attention = Attention.find_by_user_id(session[:user_id])
   end
 

@@ -30,6 +30,9 @@ gem 'seo_helper', '~> 1.0', :git => 'git://github.com/techbang/seo_helper.git'
 gem "haml-rails", "~> 0.9"
 gem "devise"
 gem 'omniauth-facebook'
+gem "letter_opener", group: :development
+gem 'figaro'
+gem 'whenever', :require => false
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

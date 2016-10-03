@@ -2,7 +2,13 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
+
   config.cache_classes = true
+  config.action_mailer.default_url_options = { host: 'rate-calculate.herokuapp.com' }
+
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
