@@ -11,10 +11,10 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
   #/////////////////////devise//////////////////////////
-  def render_country_category(country)
-    key = CountryData.country_categories.key(country.country_category)
-    I18n.t("country_categories.#{key}")
-  end
+  # def render_country_category(country)
+  #   key = CountryData.country_categories.key(country.country_category)
+  #   I18n.t("country_categories.#{key}")
+  # end
 
 
   def attention_message
@@ -55,15 +55,16 @@ module ApplicationHelper
 
     alerts.join("\n").html_safe
   end
+
   protected
-  def check_user_login!
-    if !user_signed_in
-      flash[:devise_alert] = "確實填寫欄位"
-      render :_new
-      # redirect_to login_path, :notice => 'if you want to add a notice'
-      ## if you want render 404 page
-      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
-    end
-  end
+  # def check_user_login!
+  #   if !user_signed_in
+  #     flash[:devise_alert] = "確實填寫欄位"
+  #     render :_new
+  #     # redirect_to login_path, :notice => 'if you want to add a notice'
+  #     ## if you want render 404 page
+  #     ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
+  #   end
+  # end
 
 end

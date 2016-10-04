@@ -1,16 +1,42 @@
-#register-form{:style => "display:none;"}
+#register-form{style: "display:none;"}
   .modal-body
     #div-register-msg
-      #icon-register-msg.glyphicon.glyphicon-chevron-right
-      %span#text-register-msg Register an account.
+      -# #icon-register-msg.glyphicon.glyphicon-chevron-right
+      -# %span#text-register-msg Register an account.
+      = render 'application/modal/oauth'
       = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), label_errors: true, inline_errors: true) do |f|
-        = f.email_field :email, required: true, autofocus: true
-        = f.password_field :password, label: "Password"
-        = f.password_field :password_confirmation, label: "Confirm Password"
-        = f.submit "Create Account"
+        = f.text_field :first_name, hide_label: true, placeholder: "名字", control_class: 'modal-setting form-control decorative-input'
+        = f.text_field :last_name, hide_label: true, placeholder: "姓氏", control_class: 'modal-setting form-control decorative-input'
+        = f.email_field :email, required: true, autofocus: true, hide_label: true, placeholder: "電子郵箱地址", control_class: 'modal-setting form-control decorative-input'
+        = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control decorative-input'
+        = f.password_field :password_confirmation, hide_label: true, placeholder: "再次輸入密碼", control_class: 'modal-setting form-control decorative-input'
+        = f.submit "註冊", class: 'modal-setting form-control btn-login'
     .modal-footer
-      %div
-        %button.btn.btn-primary.btn-lg.btn-block{:type => "submit"} Register
-      %div
-        %button#register_login_btn.btn.btn-link{:type => "button"} Log In
-        %button#register_lost_btn.btn.btn-link{:type => "button"} Lost Password?
+      .clearfix.space-1
+        %h4.pull-left 已經有帳號了嗎？
+        %button#register_login_btn.btn.modal-setting.pull-right{type: "button"} 登錄
+
+
+:sass
+  .decorative-input
+    background-image: url(https://a1.muscache.com/airbnb/static/signinup/text-field-icons-72d5ec863b1ef7c22391015ec8af5906.png)
+    background-repeat: no-repeat
+    background-position: right 10px
+    -webkit-box-sizing: border-box
+    -moz-box-sizing: border-box
+    box-sizing: border-box
+    display: block
+    font-size: 14px
+    height: 40px
+    padding: 10px 35px 10px 10px
+    width: 100% !important
+    -webkit-background-size: 40px 171px
+    -moz-background-size: 40px 171px
+    -o-background-size: 40px 171px
+    background-size: 40px 171px
+
+  .decorative-input[type=email]
+    background-position: right -40px
+
+  .decorative-input[type=password]
+    background-position: right -90px

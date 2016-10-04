@@ -1,4 +1,3 @@
-
 $(function() {
 
   var $formLogin = $('#login-form');
@@ -9,7 +8,9 @@ $(function() {
   var $msgAnimateTime = 150;
   var $msgShowTime = 2000;
 
-  $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
+  $('#login_register_btn').click( function () {
+    modalAnimate($formLogin, $formRegister);
+  });
   $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });
   $('#login_lost_btn').click( function () { modalAnimate($formLogin, $formLost); });
   $('#lost_login_btn').click( function () { modalAnimate($formLost, $formLogin); });
@@ -27,5 +28,6 @@ $(function() {
     });
   }
 
-
+  $('#register-form .btn-google-login .text-container').text('使用Google帳號註冊');
+  $('#register-form .btn-fb-login .text-container').text('使用Facebook帳號註冊');
 });

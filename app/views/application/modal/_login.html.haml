@@ -1,14 +1,7 @@
 #login-form
   .modal-body
     #div-login-msg
-      = button_tag class: 'btn btn-block btn-fb-login modal-setting', type: 'button' do
-        = link_to user_facebook_omniauth_authorize_path do
-          使用Facebook帳號登錄
-      %button.btn.btn-block.btn-google-login.modal-setting{:type => "button"} 使用Google帳號登錄
-      .signup-or-separator
-        %span.h5.signup-or-separator--text 或
-        %hr
-
+      = render 'application/modal/oauth'
       //#icon-login-msg.glyphicon.glyphicon-chevron-right
       //%span#text-login-msg Enter your email and password to sign in
       = bootstrap_form_for(resource_name, :url => session_path(resource_name)) do |f|
@@ -22,7 +15,7 @@
     .modal-footer
       .clearfix.space-1
         %h4.pull-left 還沒有帳號嗎？
-        %button#login_register_btn.btn.modal-setting.pull-right{:type => "button"} 註冊
+        %button#login_register_btn.btn.modal-setting.pull-right{type: "button"} 註冊
 
 
 :sass
@@ -38,38 +31,11 @@
     background: white
     color: #484848
 
-  .btn-fb-login
-    border-color: #3B5998
-    border-bottom-color: #263a63
-    background-color: #3B5998
-    a
-      color: #fff !important
-    &:focus
-      border-color: #4568b2
-      border-bottom-color: #2d4575
-      background-color: #4568b2
-      color: #fff
   .btn-login
     border-color: #ff5a5f
     border-bottom-color: #e00007
     background-color: #ff5a5f
     color: #fff
-
-  .signup-or-separator
-    background: none
-    height: 45px
-    position: relative
-    text-align: center
-
-  .signup-or-separator--text
-    background-color: #fff
-    display: inline-block
-    padding: 8px
-
-  .signup-or-separator hr
-    margin: -24px auto 10px
-    width: 100%
-
   //customize
   .form-group
     margin-bottom: 5px !important
@@ -82,7 +48,7 @@
   #login_lost_btn
     color: #e00007
 
-  #login_register_btn
+  #login_register_btn, #register_login_btn
     background: #fff
     height: 40px
     border-color: #ff5a5f

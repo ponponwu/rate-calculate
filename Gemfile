@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 gem "letter_opener", group: :development
 gem 'figaro'
 gem 'whenever', :require => false
+gem "font-awesome-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
