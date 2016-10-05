@@ -33,5 +33,9 @@ class Users::SessionsController < Devise::SessionsController
     # signed_in_root_path(resource)
     root_path
   end
+  def invalid_login_attempt
+    set_flash_message(:alert, :invalid)
+    render json: flash[:alert], status: 401
+  end
 
 end

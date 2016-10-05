@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
   def self.new_with_session(params, session)
     super.tap do |user|
-      if omniauth = session["devise.facebook_data"].except('extra')
+      if omniauth = session["devise.facebook_data"]
         user.email = omniauth.info.email
         user.name = omniauth.info.name
         user.image = omniauth.info.image

@@ -7,6 +7,13 @@
       / Begin # DIV Form
       #div-forms
         .modal-container
+          #devise-error-message.text-center
+            %p
           = render 'application/modal/login'
           = render 'application/modal/lost'
           = render 'application/modal/register'
+
+:sass
+  #devise-error-message p
+    font-size: 18px
+    color: red

@@ -22,7 +22,7 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
-  config.http_authenticatable_on_xhr = true
+  # config.http_authenticatable_on_xhr = true
   #here!!!!!!
   # config.navigational_formats = ["*/*", :html, :json]
   # ==> Configuration for any authentication mechanism

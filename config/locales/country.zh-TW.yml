@@ -1,4 +1,4 @@
-"zh-TW":
+zh-TW:
   country_categories:
     NTD: "新台幣"
     USD: "美金"
@@ -21,6 +21,10 @@
     TRY: '土耳其幣'
 
 
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 錯誤
 
     # TAIWAN: "台幣"
     # AMERICA: "美金"

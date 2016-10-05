@@ -13,13 +13,26 @@
         -#   = f.number_field :target_amount, hide_label: true, placeholder: "填入標的金額"
         -#   = f.submit "送出"
 
-        = form_for Attention.new, :url => attentions_path, remote: true do |f|
-          = f.label :currency
-          = f.text_field :currency
-
-          = f.label :target_amount
-          = f.text_field :target_amount
-
-          = f.submit
+        = form_for Attention.new, url: attentions_path, remote: true do |f|
+          = f.select :currency, Country.categories, {placeholder: "選擇地區貨幣", class: "selectpicker"}
+          = f.number_field :target_amount
+          = f.submit "送出", placeholder: "填入標的金額"
 
 :javascript
+  $(document).ready(function() {
+    //form id
+    $('#new_attention')
+    .bind('ajax:success', function(evt, data, status, xhr) {
+      //function called on status: 200 (for ex.)
+      console.log('success');
+    })
+    .bind("ajax:error", function(evt, xhr, status, error) {
+      //function called on status: 401 or 500 (for ex.)
+      $('#devise-error-message p').text(xhr.responseText);
+      console.log(xhr.responseText);
+      console.log(xhr);
+      console.log(evt);
+      console.log(status);
+      console.log(error);
+    });
+  });

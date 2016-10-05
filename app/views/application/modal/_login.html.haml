@@ -12,15 +12,22 @@
       -#     %a#login_lost_btn.pull-right 忘記密碼?
       -#   = f.submit "登錄", class: 'modal-setting form-control btn-login'
       -#
-      = form_for User.new, as: resource_name, :url => session_path(resource_name), validate: true do |f|
-        = f.label :email
-        = f.text_field :email
+      -# = form_for User.new, as: resource_name, :url => session_path(resource_name), validate: true do |f|
+      -#   = f.label :email
+      -#   = f.text_field :email
+      -#   = f.label :password
+      -#   = f.text_field :password
+      -#   = f.submit
 
-        = f.label :password
-        = f.text_field :password
-
-        = f.submit
-
+      = form_for resource, url: session_path(:user), remote: true, validate: true do |f|
+        = f.text_field :email, placeholder: "電子郵件地址", class: 'modal-setting form-control'
+        = f.password_field :password, placeholder: "密碼", class: 'modal-setting form-control'
+        .clearfix.space-1
+          = f.label :remember_me do
+            記住我
+            = f.check_box :remember_me, class: 'remember_me'
+            %a#login_lost_btn.pull-right 忘記密碼?
+        = f.submit value: '登錄', class: 'modal-setting form-control btn-login'
 
 
     .modal-footer
@@ -34,6 +41,7 @@
     height: 60px
     border-radius: 2px !important
     font-size: 16px
+    margin: 5px 0
   .btn-block
     display: block
     white-space: normal
@@ -66,10 +74,27 @@
     color: #ff5a5f
 
   .space-1
-    margin: 6px 0
+    margin: 12px 0
 
 
 
 
 :javascript
   $('#login_lost_btn').insertAfter('label[for=user_remember_me]');
+  $(document).ready(function() {
+    //form id
+    $('#new_user')
+    .bind('ajax:success', function(evt, data, status, xhr) {
+      //function called on status: 200 (for ex.)
+      console.log('success');
+    })
+    .bind("ajax:error", function(evt, xhr, status, error) {
+      //function called on status: 401 or 500 (for ex.)
+      $('#devise-error-message p').text(xhr.responseText);
+      console.log(xhr.responseText);
+      console.log(xhr);
+      console.log(evt);
+      console.log(status);
+      console.log(error);
+    });
+  });

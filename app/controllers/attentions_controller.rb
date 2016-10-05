@@ -15,7 +15,11 @@ class AttentionsController < ApplicationController
     @currency = @attention.currency
     @userId = session["warden.user.user.key"][0][0]
     @old_attention = Attention.find_by(user_id: @userId, is_enabled: true, currency: @currency)
-    if !@old_attention.blank?
+    Rails.logger.warn(" >>>>>>>>>>>>>>>>>>>>>>> Attention Create >>>>>>>>>>>>>>>>>>>>>")
+    Rails.logger.warn(attention_params)
+    Rails.logger.warn(@old_attention.blank?)
+    Rails.logger.warn(@old_attention.present?)
+    if !@old_attention.blank? && !attention_params["target_amount"].blank?
       # find and update
       respond_to do |format|
         if @old_attention.update(attention_params)
@@ -23,21 +27,25 @@ class AttentionsController < ApplicationController
           format.html { redirect_to attentions_path}
         else
           flash[:notice] = "請重試"
-          render :back
+          # render :back
+
+          format.js
+          raise '幹'
         end
       end
     else
-      if @attention.save
-        flash[:notice] = '新增成功'
-        redirect_to attentions_path
-      else
-        flash[:attention_alert] = '確實填寫欄位'
-        # render :_new
-        # render 後為何底部是index的頁面
-        respond_to do |format|
-          # format.html{render :_new }
-          format.js{render file: '/attentions/create.js.haml' }
-        end
+      Rails.logger.warn(" >>> Attention Create >>>")
+      respond_to do |format|
+        # format.html{render :_new }
+        format.js {
+          if @attention.save
+            flash[:notice] = '新增成功'
+            redirect_to attentions_path
+          else
+            flash[:attention_alert] = '確實填寫欄位'
+            render 'failed'
+          end
+        }
       end
     end # if
   end
