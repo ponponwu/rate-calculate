@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
       [bank, min]
     end
   end
+
   def set_newest_session_rate
     taiwanBank = []
     url = 'http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm'
@@ -61,26 +62,26 @@ class ApplicationController < ActionController::Base
     session[:rate] = Hash[taiwanBank.map { |d| [d['dollar'], d['buy_in']] }]
   end
   # 每一小時比對 目標金額與當下的匯率值 符合條件便寄出信件提醒 並將該筆記錄取消
-  def attention_job
-    @attention = Attention.where(is_enabled: true)
-    @attention.each do |a|
-      check_attention_and_send(a)
-    end
-  end
-
-  def check_attention_and_send(attention)
-    if session[:rate][currency] > attention.target_amount
-      @user = User.find_by(attention.user_id)
-      AttentionMailer.notify_attention_placed(@user, attention).deliver_now
-      params_update = {is_enabled: false }
-      update_attention_status(attention, params_update)
-    end
-  end
-
-  def update_attention_status(attention, params)
-    attention.update_attributes(params)
-    # 要測試失敗會發生什麼
-  end
+  # def attention_job
+  #   @attention = Attention.where(is_enabled: true)
+  #   @attention.each do |a|
+  #     check_attention_and_send(a)
+  #   end
+  # end
+  #
+  # def check_attention_and_send(attention)
+  #   if session[:rate][currency] > attention.target_amount
+  #     @user = User.find_by(attention.user_id)
+  #     AttentionMailer.notify_attention_placed(@user, attention).deliver_now
+  #     params_update = {is_enabled: false }
+  #     update_attention_status(attention, params_update)
+  #   end
+  # end
+  #
+  # def update_attention_status(attention, params)
+  #   attention.update_attributes(params)
+  #   # 要測試失敗會發生什麼
+  # end
   # model attention的user_id從1開始跑
   # is_enable = true, get currency, target_amount
   #

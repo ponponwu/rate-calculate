@@ -16,3 +16,13 @@
 //= require bootstrap-sprockets
 //= require_tree .
 //= require select2
+//= require rails.validations
+
+$(document).ready(function() {
+  var hash = window.location.hash;
+  if (hash.length > 0) {
+    if (hash === '#login') {
+      $('#login-modal').modal();
+    }
+  }
+});

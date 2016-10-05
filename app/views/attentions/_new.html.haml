@@ -6,19 +6,20 @@
         %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
     / Begin # DIV Form
     #div-forms
-      = attention_message
+      -# = attention_message
       .modal-container
-        = bootstrap_form_for(:attention, url: attentions_path, html: { method: :post }) do |f|
-          = f.select :currency, Country.categories, {placeholder: "選擇地區貨幣", class: "selectpicker", hide_label: true}
-          = f.number_field :target_amount, hide_label: true, placeholder: "填入標的金額"
-          = f.submit "送出"
+        -# = bootstrap_form_for(:attention, url: attentions_path, html: { method: :post }) do |f|
+        -#   = f.select :currency, Country.categories, {placeholder: "選擇地區貨幣", class: "selectpicker", hide_label: true}
+        -#   = f.number_field :target_amount, hide_label: true, placeholder: "填入標的金額"
+        -#   = f.submit "送出"
 
+        = form_for Attention.new, :url => attentions_path, remote: true do |f|
+          = f.label :currency
+          = f.text_field :currency
+
+          = f.label :target_amount
+          = f.text_field :target_amount
+
+          = f.submit
 
 :javascript
-  $('.attention.attention-create-form__container .btn').click(function(){
-    var target_amount = $('#attention_target_amount').val();
-    if (target_amount === ""){
-      alert("請輸入數字!");
-      return false;
-    }
-  });

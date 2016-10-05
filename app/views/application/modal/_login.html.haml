@@ -4,13 +4,24 @@
       = render 'application/modal/oauth'
       //#icon-login-msg.glyphicon.glyphicon-chevron-right
       //%span#text-login-msg Enter your email and password to sign in
-      = bootstrap_form_for(resource_name, :url => session_path(resource_name)) do |f|
-        = f.email_field :email, hide_label: true, placeholder: "電子郵件地址", control_class: 'modal-setting form-control'
-        = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control'
-        .clearfix.space-1
-          = f.check_box :remember_me, label: "記住我", class: 'remember_me'
-          %a#login_lost_btn.pull-right 忘記密碼?
-        = f.submit "登錄", class: 'modal-setting form-control btn-login'
+      -# = bootstrap_form_for(resource_name, :url => session_path(resource_name)) do |f|
+      -#   = f.email_field :email, hide_label: true, placeholder: "電子郵件地址", control_class: 'modal-setting form-control'
+      -#   = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control'
+      -#   .clearfix.space-1
+      -#     = f.check_box :remember_me, label: "記住我", class: 'remember_me'
+      -#     %a#login_lost_btn.pull-right 忘記密碼?
+      -#   = f.submit "登錄", class: 'modal-setting form-control btn-login'
+      -#
+      = form_for User.new, as: resource_name, :url => session_path(resource_name), validate: true do |f|
+        = f.label :email
+        = f.text_field :email
+
+        = f.label :password
+        = f.text_field :password
+
+        = f.submit
+
+
 
     .modal-footer
       .clearfix.space-1
