@@ -18,6 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-every hour do
-  runner 'attention_job'
+every :hour do
+  rake "attention_job:execute_attention_job"
 end

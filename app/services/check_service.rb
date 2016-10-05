@@ -21,11 +21,10 @@ class CheckService
     end
     taiwan_bank << {
       'dollar' => 'NTD',
-      'buy_in' => 1
+      'buy_in' => '1'
     }
-    @taiwan = taiwan_bank
-    # updae db
-    # session[:rate] = Hash[taiwanBank.map { |d| [d['dollar'], d['buy_in']] }]
+    @tw = Hash[taiwan_bank.map { |d| [d['dollar'], d['buy_in']] }]
+    attention_job
   end
 
   def attention_job
@@ -36,9 +35,10 @@ class CheckService
   end
 
   def check_attention_and_send(attention)
-    if session[:rate][currency] > attention.target_amount
+    @currency = tw[attention.currency]
+    if @currency.to_f > attention.target_amount.to_f
       @user = User.find_by(attention.user_id)
-      AttentionMailer.notify_attention_placed(@user, attention).deliver_now
+      AttentionMailer.notify_attention_placed(@user, attention, @currency).deliver_now
       params_update = {is_enabled: false }
       update_attention_status(attention, params_update)
     end
