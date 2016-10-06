@@ -21,11 +21,6 @@ zh-TW:
     TRY: '土耳其幣'
 
 
-  activerecord:
-    errors:
-      messages:
-        record_invalid: 錯誤
-
     # TAIWAN: "台幣"
     # AMERICA: "美金"
     # EUROPE: "歐元"

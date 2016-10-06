@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
     super.tap do |user|
       if omniauth = session["devise.facebook_data"]
         user.email = omniauth.info.email
-        user.name = omniauth.info.name
+        user.first_name = omniauth.info.first_name
+        user.last_name = omniauth.info.last_name
         user.image = omniauth.info.image
       end
     end

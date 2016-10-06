@@ -5,7 +5,14 @@ class CheckService
     @tw = []
   end
 
-  def refresh_rate!
+  def execute_check_job!
+    refresh_rate
+    attention_job
+  end
+
+private
+
+  def refresh_rate
     taiwan_bank = []
     url = 'http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm'
     doc = Nokogiri::HTML(open(url))
@@ -24,7 +31,6 @@ class CheckService
       'buy_in' => '1'
     }
     @tw = Hash[taiwan_bank.map { |d| [d['dollar'], d['buy_in']] }]
-    attention_job
   end
 
   def attention_job
@@ -36,7 +42,7 @@ class CheckService
 
   def check_attention_and_send(attention)
     @currency = tw[attention.currency]
-    if @currency.to_f > attention.target_amount.to_f
+    if @currency.to_f < attention.target_amount.to_f
       @user = User.find_by(attention.user_id)
       AttentionMailer.notify_attention_placed(@user, attention, @currency).deliver_now
       params_update = {is_enabled: false }

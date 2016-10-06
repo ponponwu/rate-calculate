@@ -5,7 +5,7 @@ namespace :attention_job do
     # main.set_newest_session_rate
     # # main.attention_job
     puts 'Test Success'
-    CheckService.new.refresh_rate!
+    CheckService.new.execute_check_job!
     # console 可直接測
   end
 end

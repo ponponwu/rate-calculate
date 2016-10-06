@@ -1,5 +1,15 @@
 - if current_user
-  %li= link_to("新增", new_release_attentions_path, {"class": "nav-new","data-toggle": "modal", "data-target": "#attention-modal", remote: true, method: 'get'})
+  %li= link_to("新增", '#', {"class": "nav-new","data-toggle": "modal", "data-target": "#attention-modal", remote: true, method: 'get'})
 - else
   %li= link_to("新增", '#', {"data-toggle": "modal", "data-target": "#login-modal", remote: true, method: 'get'})
-#attention-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :style => "display: none;", :tabindex => "-1"}
+#attention-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", :style => "display: none;", tabindex: "-1"}
+  .modal-dialog
+    .modal-content.attention.attention-create-form__container
+      .modal-header{align: "center"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+          %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
+      / Begin # DIV Form
+      #div-forms.modal-body
+        -# = attention_message
+        .modal-container
+          = render 'attentions/form'
