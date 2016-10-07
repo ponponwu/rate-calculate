@@ -1,10 +1,10 @@
 = form_for Attention.new, url: attentions_path, remote: true, html: {role: :form, 'data-model' => 'attention'} do |f|
-  - if @attention.errors.any?
-    #attention_error
-      %h2= "#{pluralize(@attention.errors.count, "error")} prohibited this person from being saved"
-      %ul
-        - @attention.errors.full_messages.each do |msg|
-          %li= msg
+  -# - if @attention.errors.any?
+  -#   #attention_error
+  -#     %h2= "#{pluralize(@attention.errors.count, "error")} prohibited this person from being saved"
+  -#     %ul
+  -#       - @attention.errors.full_messages.each do |msg|
+  -#         %li= msg
   .form-group
     = f.select :currency, Country.categories, {placeholder: "選擇地區貨幣", class: "selectpicker"}
     %span.help-block

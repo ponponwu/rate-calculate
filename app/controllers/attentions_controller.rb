@@ -15,14 +15,12 @@ class AttentionsController < ApplicationController
       respond_to do |format|
         if @old_attention.update(attention_params)
           format.html { redirect_to attentions_path, notice: "已將" + I18n.t("country_categories.#{@currency}") + "修改完成"}
-        # else
-        #   flash[:notice] = "請重試"
-        #   format.js
+        else
+          format.html {render :index, notice: "請重試"}
         end
       end
     else
       respond_to do |format|
-        # format.html{render :_new }
         if @attention.save
           # format.html { redirect_to @attention, notice: '新增成功' }
           format.js{ render 'show', status: :created, location: @attention}

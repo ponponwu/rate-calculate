@@ -4,13 +4,21 @@
       -# #icon-register-msg.glyphicon.glyphicon-chevron-right
       -# %span#text-register-msg Register an account.
       = render 'application/modal/oauth'
-      = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), label_errors: true, inline_errors: true) do |f|
-        = f.text_field :first_name, hide_label: true, placeholder: "名字", control_class: 'modal-setting form-control decorative-input'
-        = f.text_field :last_name, hide_label: true, placeholder: "姓氏", control_class: 'modal-setting form-control decorative-input'
-        = f.email_field :email, required: true, autofocus: true, hide_label: true, placeholder: "電子郵箱地址", control_class: 'modal-setting form-control decorative-input'
-        = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control decorative-input'
-        = f.password_field :password_confirmation, hide_label: true, placeholder: "再次輸入密碼", control_class: 'modal-setting form-control decorative-input'
-        = f.submit "註冊", class: 'modal-setting form-control btn-login'
+      -# = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), label_errors: true, inline_errors: true) do |f|
+      -#   = f.text_field :first_name, hide_label: true, placeholder: "名字", control_class: 'modal-setting form-control decorative-input'
+      -#   = f.text_field :last_name, hide_label: true, placeholder: "姓氏", control_class: 'modal-setting form-control decorative-input'
+      -#   = f.email_field :email, required: true, autofocus: true, hide_label: true, placeholder: "電子郵箱地址", control_class: 'modal-setting form-control decorative-input'
+      -#   = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control decorative-input'
+      -#   = f.password_field :password_confirmation, hide_label: true, placeholder: "再次輸入密碼", control_class: 'modal-setting form-control decorative-input'
+      -#   = f.submit "註冊", class: 'modal-setting form-control btn-login'
+      = form_for resource, url: registration_path(:user), remote: true, validate: true do |f|
+        = f.text_field :first_name, placeholder: "名字", class: 'modal-setting form-control decorative-input'
+        = f.text_field :last_name, placeholder: "姓氏", class: 'modal-setting form-control decorative-input'
+        = f.email_field :email, placeholder: "電子郵箱地址", class: 'modal-setting form-control decorative-input'
+        = f.password_field :password, placeholder: "密碼", class: 'modal-setting form-control decorative-input'
+        = f.password_field :password_confirmation, placeholder: "再次輸入密碼", class: 'modal-setting form-control decorative-input'
+        = f.submit value: '註冊', class: 'modal-setting form-control btn-login'
+
     .modal-footer
       .clearfix.space-1
         %h4.pull-left 已經有帳號了嗎？

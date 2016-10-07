@@ -10,8 +10,6 @@ class CheckService
     attention_job
   end
 
-private
-
   def refresh_rate
     taiwan_bank = []
     url = 'http://rate.bot.com.tw/Pages/Static/UIP003.zh-TW.htm'
@@ -55,4 +53,29 @@ private
     # 要測試失敗會發生什麼
   end
 
+  def select_country(country_select)
+    url = 'http://www.taiwanrate.org/exchange_rate.php?c=USD#.VwlFMhJ95TY'
+    url.gsub!(/c=\w\w\w/, "c=#{country_select}")
+    doc = Nokogiri::HTML(open(url))
+    bank_list = []
+    doc.css('#markup table tbody tr td:nth-child(1)').each_with_index do |r, idx|
+      bank_list.push(
+        bank: r.children.text,
+        buy: idx,
+        sell: idx
+      )
+    end
+    doc.css('#markup table tbody tr td:nth-child(2)').each_with_index do |r, idx|
+      bank_list[idx][:buy] = r.children.text
+    end
+    doc.css('#markup table tbody tr td:nth-child(3)').each_with_index do |r, idx|
+      bank_list[idx][:sell] = r.children.text
+    end
+    bank_list
+    # _HTML = doc.css('body h1').text
+    # @title = _HTML
+    # max = bankList.min_by {|bank, buy| buy }
+    # max = bankList.max_by(&:buy)
+  end
+  
 end
