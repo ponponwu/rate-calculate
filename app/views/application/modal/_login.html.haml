@@ -19,7 +19,7 @@
       -#   = f.text_field :password
       -#   = f.submit
 
-      = form_for resource, url: session_path(:user), remote: true, validate: true do |f|
+      = form_for resource, url: session_path(:user), remote: true, html: {role: :form, 'data-model' => 'user'} do |f|
         .form-group
           = f.text_field :email, placeholder: "電子郵件地址", class: 'modal-setting form-control'
           %span.help-block
@@ -85,16 +85,14 @@
 
 :javascript
   $('#login_lost_btn').insertAfter('label[for=user_remember_me]');
-  $(document).ready(function() {
-    //form id
-    $('#new_user')
-    .bind('ajax:success', function(evt, data, status, xhr) {
-      //function called on status: 200 (for ex.)
-      console.log('success');
-    })
-    .bind("ajax:error", function(evt, xhr, status, error) {
-      //function called on status: 401 or 500 (for ex.)
-      $(evt.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
-      
+  $(document).ready(function(){
+    $(document).bind('ajaxError', 'form#new_user', function(evt, xhr, settings, exception){
+      console.log(xhr);
+      // $(evt.data).render_form_errors( $.parseJSON(xhr.responseText) );
+      $(evt.data).render_login_errors( xhr.responseText );
     });
+    $('#login_register_btn').click(function(){
+      $('#devise-error-message').html('');
+    });
+
   });

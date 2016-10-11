@@ -11,7 +11,7 @@
       -#   = f.password_field :password, hide_label: true, placeholder: "密碼", control_class: 'modal-setting form-control decorative-input'
       -#   = f.password_field :password_confirmation, hide_label: true, placeholder: "再次輸入密碼", control_class: 'modal-setting form-control decorative-input'
       -#   = f.submit "註冊", class: 'modal-setting form-control btn-login'
-      = form_for resource, url: registration_path(:user), remote: true, validate: true do |f|
+      = form_for resource, url: registration_path(:user), remote: true, html: {id: 'register_user', role: :form, 'data-model' => 'user'} do |f|
         = f.text_field :first_name, placeholder: "名字", class: 'modal-setting form-control decorative-input'
         = f.text_field :last_name, placeholder: "姓氏", class: 'modal-setting form-control decorative-input'
         = f.email_field :email, placeholder: "電子郵箱地址", class: 'modal-setting form-control decorative-input'
@@ -48,3 +48,16 @@
 
   .decorative-input[type=password]
     background-position: right -90px
+
+
+
+
+:javascript
+  $(document).ready(function(){
+    $(document).bind('ajaxError', 'form#register_user', function(evt, xhr, settings, exception){
+      console.log(xhr);
+      // $(evt.data).render_form_errors( $.parseJSON(xhr.responseText) );
+      $(evt.data).render_login_errors( xhr.responseText );
+    });
+
+  });

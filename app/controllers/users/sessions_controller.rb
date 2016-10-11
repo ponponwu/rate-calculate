@@ -13,16 +13,23 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def create
+    Rails.logger.warn(" >>> create >>>")
     self.resource = warden.authenticate!(auth_options)
     if resource
+      logger.debug("#{resource}")
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)
       yield resource if block_given?
       respond_with resource, location: after_sign_in_path_for(resource)
-      # session[:user_id] = resource.id
+      # respond_with(resource) do |format|
+      #   format.js{ render 'show', status: :created, location: after_sign_in_path_for(resource)}
+      # end
     else
-      puts "sign_in error"
-      redirect_to root_path(msg: 'GOOD!')
+      # logger.error(resource)
+      # redirect_to root_path(msg: 'GOOD!')
+      respond_to do |format|
+        format.js{ render json: resource.inactive_message, status: :unprocessable_entity }
+      end
     end
   end
   protected

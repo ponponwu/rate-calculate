@@ -1,13 +1,5 @@
-$(document).ready(function(){
-  $(document).bind('ajaxError', 'form#new_attention', function(event, jqxhr, settings, exception){
-    // note: jqxhr.responseJSON undefined, parsing responseText instead
-    $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
-  });
-  $(document).bind('ajaxError', 'form#new_user', function(event, jqxhr, settings, exception){
-    // note: jqxhr.responseJSON undefined, parsing responseText instead
-    $(event.data).render_form_errors( $.parseJSON(jqxhr.responseText) );
-  });
-});
+
+
 
 (function($) {
   $.fn.modal_success = function(){
@@ -29,6 +21,15 @@ $(document).ready(function(){
       $input.closest('.form-group').addClass('has-error').find('.help-block').html( messages.join(' & ') );
     });
   };
+  $.fn.render_login_errors = function(errors){
+    $form = this;
+    // this.clear_login_errors();
+    // model = this.data('model');
+    $errorMessages = $('#devise-error-message p');
+    $errorMessages.html( errors );
+  };
+
+
   $.fn.clear_previous_errors = function(){
     $('.form-group.has-error', this).each(function(){
       $('.help-block', $(this)).html('');
