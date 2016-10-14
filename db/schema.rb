@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007030954) do
+ActiveRecord::Schema.define(version: 20161014042203) do
 
   create_table "attentions", force: :cascade do |t|
     t.integer  "user_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161007030954) do
   create_table "countries", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "rate_array"
   end
 
   create_table "user_notifies", force: :cascade do |t|

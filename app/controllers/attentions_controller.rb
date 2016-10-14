@@ -10,7 +10,8 @@ class AttentionsController < ApplicationController
     @userId = session["warden.user.user.key"][0][0]
     @old_attention = Attention.find_by(user_id: @userId, is_enabled: true, currency: @currency)
 
-    if !@old_attention.blank? && !attention_params["target_amount"].blank?
+    # if !@old_attention.blank? && !attention_params["target_amount"].blank?
+    if !@old_attention.blank? && @attention.persisted?
       # find and update
       respond_to do |format|
         if @old_attention.update(attention_params)

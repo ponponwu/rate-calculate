@@ -2,7 +2,7 @@ class CheckService
   attr_accessor :tw
   # redable writable
   def initialize
-    @tw = []
+    tw = []
   end
 
   def execute_check_job!
@@ -28,8 +28,11 @@ class CheckService
       'dollar' => 'NTD',
       'buy_in' => '1'
     }
-    @tw = Hash[taiwan_bank.map { |d| [d['dollar'], d['buy_in']] }]
+    tw = Hash[taiwan_bank.map { |d| [d['dollar'], d['buy_in']] }]
+    Country.find_by(1).create_or_update(rate_array: tw)
+    # @tw = taiwan_bank
   end
+
 
   def attention_job
     @attention = Attention.where(is_enabled: true)
@@ -77,5 +80,5 @@ class CheckService
     # max = bankList.min_by {|bank, buy| buy }
     # max = bankList.max_by(&:buy)
   end
-  
+
 end
