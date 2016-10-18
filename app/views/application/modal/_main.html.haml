@@ -1,4 +1,4 @@
-#login-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", style: "display: none;", tabindex: "-1"}
+#login-modal.modal.fade.active{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", style: "display: none;", tabindex: "-1"}
   .modal-dialog
     .modal-content.sign_up.signup-login-form__container
       .modal-header{align: "center"}
@@ -17,3 +17,15 @@
   #devise-error-message p
     font-size: 18px
     color: red
+
+  @media (max-width: 743px)
+    .modal-dialog
+      width: 100%
+      height: 100%
+      margin: 0
+      padding: 0
+
+    .modal-content
+      height: auto
+      min-height: 100%
+      border-radius: 0
