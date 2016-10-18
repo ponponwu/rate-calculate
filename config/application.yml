@@ -1,0 +1,30 @@
+
+defaults: &defaults
+  # app_name: "demotest"
+  # google_oauth2_app_id: "自己申請的key"
+  # google_oauth2_secret: "自己申請的key"
+
+development:
+  # DOMAIN: 'gmail.com'
+  # GMAIL_USERNAME: 'vincent00406@gmail.com'
+  # GMAIL_PASSWORD: 'abc2020955'
+  app_name: 'demotest'
+  google_app_id: '239775732566-hl5rkli8b513cp874l6n7aqn2m7sod3g.apps.googleusercontent.com'
+  google_secret: 'SBrJLEboPKEMvegDhbbyy72x'
+  fb_app_id: '882710625197188'
+  fb_secret: '39a03a9e8abc38bad2ee6f3c6db0a226'
+  DOMAIN: 'rate-service.com'
+  MAILGUN_USERNAME: 'postmaster@sandbox655a028eb028409e95274d9342abcf50.mailgun.org'
+  MAILGUN_PASSWORD: '2098371971ca67b637d900a5dcda2ec5'
+test:
+  <<: *defaults
+
+production:
+  DOMAIN: 'rate-service.com'
+  MAILGUN_USERNAME: 'postmaster@sandbox655a028eb028409e95274d9342abcf50.mailgun.org'
+  MAILGUN_PASSWORD: '2098371971ca67b637d900a5dcda2ec5'
+  google_app_id: '239775732566-hl5rkli8b513cp874l6n7aqn2m7sod3g.apps.googleusercontent.com'
+  google_secret: 'SBrJLEboPKEMvegDhbbyy72x'
+  fb_app_id: '882710625197188'
+  fb_secret: '39a03a9e8abc38bad2ee6f3c6db0a226'
+  SECRET_KEY_BASE: cffe6360b10b93d686ad9f54939abc56d0d0faf6c1c5a2ec7385d3cbb9ddf89b36a64594814659c1b634437305dfdd93509fc12b89b09780b4102d17f684287d
