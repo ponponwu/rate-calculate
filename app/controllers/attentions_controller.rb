@@ -11,20 +11,18 @@ class AttentionsController < ApplicationController
     @old_attention = Attention.find_by(user_id: @userId, is_enabled: true, currency: @currency)
 
     # if !@old_attention.blank? && !attention_params["target_amount"].blank?
-    if !@old_attention.blank? && @attention.persisted?
+    if @old_attention.present? && attention_params["target_amount"].present?
       # find and update
       respond_to do |format|
         if @old_attention.update(attention_params)
           format.html { redirect_to attentions_path, notice: "已將" + I18n.t("country_categories.#{@currency}") + "修改完成"}
-        else
-          format.html {render :index, notice: "請重試"}
         end
       end
     else
       respond_to do |format|
         if @attention.save
-          # format.html { redirect_to @attention, notice: '新增成功' }
-          format.js{ render 'show', status: :created, location: @attention}
+          format.html { redirect_to attentions_path, notice: "已將" + I18n.t("country_categories.#{@currency}") + "加入清單" }
+          # format.js{ render 'show', status: :created, location: @attention}
         else
           # format.html { render action: 'new' }
           # format.json { render json: @attention.errors, status: :unprocessable_entity }

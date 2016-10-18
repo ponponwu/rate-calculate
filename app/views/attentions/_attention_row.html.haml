@@ -1,4 +1,4 @@
 %tr
-  %td= attention.id
-  %td= attention.currency
+  %td= I18n.t("country_categories.#{attention.currency}")
   %td= attention.target_amount
+  %td= attention.updated_at.strftime("變更於 %B %d at %I:%M %p")

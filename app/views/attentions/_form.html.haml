@@ -11,7 +11,7 @@
   .form-group
     = f.number_field :target_amount, step: :any, placeholder: "填入金額"
     %span.help-block
-  = f.submit "送出"
+  = f.submit "送出", data: { disable_with: "Please wait..." }
 -#
 -# :javascript
 -#   $(document).ready(function() {
@@ -38,5 +38,17 @@
       console.log(xhr);
       $(evt.data).render_form_errors( $.parseJSON(xhr.responseText) );
     });
-
   });
+
+    /*$('#new_attention').submit(function(){
+      $.ajax({
+        success: function(evt, xhr, settings, exception){
+          window.location.href = '/attentions';
+        },
+        error: function(evt, xhr, settings, exception){
+          console.log(xhr);
+          $(evt.data).render_form_errors( $.parseJSON(xhr.responseText) );
+        };
+      });
+      return false;
+    });*/

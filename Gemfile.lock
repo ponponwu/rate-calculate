@@ -5,7 +5,7 @@ GIT
     seo_helper (1.0.2)
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.2.1)
       actionpack (= 4.2.1)

@@ -1,11 +1,20 @@
+%h1 到價提醒列表
 %table#attention-table.table.table-bordered
   %thead
     %tr
-      %th #
-      %th{width: "220"} 貨幣名稱
-      %th 價格
+      %th{width: "75"} 貨幣名稱
+      %th 提醒價格(當前匯率目標以下提醒)
+      %th 更新時間
       -# %th{width: "100"} Options
   %tbody
     - @attentions.each do |attention|
       %tr
         = render partial: 'attention_row', locals: {attention: attention}
+
+
+
+:sass
+  h1
+    border-bottom: 1px solid
+    padding-bottom: 15px
+    margin-bottom: 40px

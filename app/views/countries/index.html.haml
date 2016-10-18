@@ -1,6 +1,6 @@
 .row
   .col-md-9
-    .test
+    .collection
       = image_link('US.gif', t('country_categories.USD'), 'USD')
       = image_link('AU.gif', t('country_categories.AUD'), 'AUD')
       = image_link('EU.jpg', t('country_categories.EUR'), 'EUR')
@@ -32,7 +32,12 @@
           .choice
           %thead.thead-default
             %tr
-              %th 銀行
-              %th 銀行買入價
-              %th 銀行賣出價
+              %th.text-center 銀行
+              %th.text-center 銀行買入價
+              %th.text-center 銀行賣出價
           %tbody
+
+
+
+:sass
+  .collection

@@ -1,7 +1,7 @@
 - if current_user
-  %li= link_to("新增", '#', {"class": "nav-new","data-toggle": "modal", "data-target": "#attention-modal", remote: true, method: 'get'})
+  %li= link_to("匯率到價提醒", '#', {"class": "nav-new", "data-toggle": "modal", "data-target": "#attention-modal", remote: true, method: 'get'})
 - else
-  %li= link_to("新增", '#', {"data-toggle": "modal", "data-target": "#login-modal", remote: true, method: 'get'})
+  %li= link_to("匯率到價提醒", '#', {"class": "nav-new", "data-toggle": "modal", "data-target": "#login-modal", remote: true, method: 'get'})
 #attention-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", :style => "display: none;", tabindex: "-1"}
   .modal-dialog
     .modal-content.attention.attention-create-form__container
@@ -10,6 +10,21 @@
           %span.glyphicon.glyphicon-remove{"aria-hidden" => "true"}
       / Begin # DIV Form
       #div-forms.modal-body
-        -# = attention_message
+        .modal-header
+          %p 請選擇國家貨幣以及輸入目標金額
         .modal-container
           = render 'attentions/form'
+
+
+:sass
+  .nav-new:after
+    position: absolute
+    content: 'new'
+    font-size: 1px
+    color: darkseagreen
+    top: 4%
+    right: -6%
+  @media (max-width: 767px)
+    .nav-new:after
+      left: 0%
+      top: -5%

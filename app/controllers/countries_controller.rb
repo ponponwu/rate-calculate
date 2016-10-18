@@ -6,7 +6,7 @@ class CountriesController < ApplicationController
     # 改成資料存入資料庫, 當下時間-update_date時間 >= 1 執行
     # else 資料庫抓資料顯示
     # @current_rate = CheckService.new.refresh_rate
-    @attention = Attention.find_by_user_id(session[:user_id])
+    # @attention = Attention.find_by_user_id(session[:user_id])
 
   end
 
@@ -26,11 +26,22 @@ class CountriesController < ApplicationController
   end
 
   def calculate
-    @current_rate = CheckService.new.refresh_rate
-    # @current_rate = Country.find_by(1).rate_array
+    # @current_rate = CheckService.new.refresh_rate
+    @current_rate = Country.find(1).rate_array
     amount = params[:amount].to_f
     from_rate = @current_rate[params[:_from]].to_f
     to_rate = @current_rate[params[:_to]].to_f
-    @cal = (amount * from_rate / to_rate).round(4)
+    result = (amount * from_rate / to_rate).round(4)
+    cal = (from_rate / to_rate).round(4)
+    cal_reverse = (1 / cal).round(4)
+    respond_to do |format|
+      format.js {
+        @from_currency = I18n.t("country_categories.#{params[:_from]}")
+        @to_currency = I18n.t("country_categories.#{params[:_to]}")
+        @result = result
+        @cal = cal
+        @cal_reverse = cal_reverse
+      }
+    end
   end
 end

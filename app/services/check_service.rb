@@ -29,7 +29,7 @@ class CheckService
       'buy_in' => '1'
     }
     tw = Hash[taiwan_bank.map { |d| [d['dollar'], d['buy_in']] }]
-    Country.find_by(1).create_or_update(rate_array: tw)
+    Country.find_or_create_by(1).update!(rate_array: tw)
     # @tw = taiwan_bank
   end
 
@@ -56,6 +56,9 @@ class CheckService
     # 要測試失敗會發生什麼
   end
 
+
+  # 把銀行的放到db id2
+  # 每小時執行一次
   def select_country(country_select)
     url = 'http://www.taiwanrate.org/exchange_rate.php?c=USD#.VwlFMhJ95TY'
     url.gsub!(/c=\w\w\w/, "c=#{country_select}")

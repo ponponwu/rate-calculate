@@ -1,3 +1,9 @@
-$('#calAmount').val('<%= @cal %>')
+// $('#calAmount').val('<%= @cal %>')
 
 //$('#calAmount').val('#{@cal}%>')
+
+var displayText = '1 <%= @from_currency%> 能夠換 <%= @cal %>  <%= @to_currency %>'
+var displayReverseText = '1 <%= @to_currency%> 能夠換 <%= @cal_reverse %> <%= @from_currency %>'
+$('.result-calculate').text('<%= @result %>  <%= @to_currency %>');
+$('.p-result').text(displayText);
+$('.p-result-reverse').text(displayReverseText);
