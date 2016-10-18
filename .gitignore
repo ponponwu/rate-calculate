@@ -17,7 +17,7 @@
 /tmp
 
 # Ignore mailgun info
-/config/email.yml
+
 
 # Ignore application configuration
 /config/application.yml
