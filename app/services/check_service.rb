@@ -29,7 +29,7 @@ class CheckService
       'buy_in' => '1'
     }
     tw = Hash[taiwan_bank.map { |d| [d['dollar'], d['buy_in']] }]
-    Country.find_or_create_by(1).update!(rate_array: tw)
+    Country.find_or_create_by(id: 1).update!(rate_array: tw)
     # @tw = taiwan_bank
   end
 
